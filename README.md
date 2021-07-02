@@ -60,8 +60,9 @@ gem install 'analytics-ruby'
 ## Usage
 
 Create an instance of the Analytics object:
+
 ```ruby
-analytics = Segment::Analytics.new(write_key: 'YOUR_WRITE_KEY')
+analytics = Segmentio::Analytics.new(write_key: 'YOUR_WRITE_KEY')
 ```
 
 Identify the user for the people section, see more [here](https://segment.com/docs/libraries/ruby/#identify).
@@ -97,7 +98,7 @@ You can use the `test: true` option to Segment::Analytics.new to cause all reque
 A test queue can be used as follows:
 
 ```ruby
-client = Segment::Analytics.new(test: true)
+client = Segmentio::Analytics.new(test: true)
 
 client.test_queue # => #<Segment::Analytics::TestQueue:0x00007f88d454e9a8 @messages={}>
 

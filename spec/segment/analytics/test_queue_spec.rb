@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Segment
+module Segmentio
   class Analytics
     describe TestQueue do
       let(:test_queue) { described_class.new }

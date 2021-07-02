@@ -1,4 +1,4 @@
-module Segment
+module Segmentio
   class Analytics
     class TestQueue
       attr_reader :messages

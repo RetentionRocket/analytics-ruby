@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-module Segment
+module Segmentio
   class Analytics
     describe Analytics do
-      let(:analytics) { Segment::Analytics.new :write_key => WRITE_KEY, :stub => true }
+      let(:analytics) { Segmentio::Analytics.new :write_key => WRITE_KEY, :stub => true }
 
       describe '#track' do
         it 'errors without an event' do
@@ -116,12 +116,12 @@ module Segment
 
       describe '#respond_to?' do
         it 'responds to all public instance methods of Segment::Analytics::Client' do
-          expect(analytics).to respond_to(*Segment::Analytics::Client.public_instance_methods(false))
+          expect(analytics).to respond_to(*Segmentio::Analytics::Client.public_instance_methods(false))
         end
       end
 
       describe '#method' do
-        Segment::Analytics::Client.public_instance_methods(false).each do |public_method|
+        Segmentio::Analytics::Client.public_instance_methods(false).each do |public_method|
           it "returns a Method object with '#{public_method}' as argument" do
             expect(analytics.method(public_method).class).to eq(Method)
           end
@@ -130,7 +130,7 @@ module Segment
 
       describe '#test_queue' do
         context 'when not in mode' do
-          let(:analytics) { Segment::Analytics.new :write_key => WRITE_KEY, :stub => true, :test => true }
+          let(:analytics) { Segmentio::Analytics.new :write_key => WRITE_KEY, :stub => true, :test => true }
 
           it 'returns TestQueue' do
             expect(analytics.test_queue).to be_a(TestQueue)
@@ -144,7 +144,7 @@ module Segment
         end
 
         context 'when not in test mode' do
-          let(:analytics) { Segment::Analytics.new :write_key => WRITE_KEY, :stub => true, :test => false }
+          let(:analytics) { Segmentio::Analytics.new :write_key => WRITE_KEY, :stub => true, :test => false }
 
           it 'errors when not in test mode' do
             expect(analytics.instance_variable_get(:@test)).to be_falsey
